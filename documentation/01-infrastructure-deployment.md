@@ -22,20 +22,34 @@ the Active Directory Domain Services deployment.
 | Workload | Windows Server 2022 |
 | Purpose | Active Directory infrastructure |
 
+
 ## 3. Virtual Machine Configuration
 
-A virtual machine was created within TrueNAS with
-resources allocated specifically for the Windows
-Server deployment.
+A virtual machine was provisioned within TrueNAS
+to host Windows Server 2022.
+
+The following resources were allocated:
 
 | Resource | Allocation |
 |---|---|
 | VM Name | DC01 |
 | Operating System | Windows Server 2022 |
-| CPU | [Enter allocation] |
-| RAM | [Enter allocation] |
-| Storage | [Enter allocation] |
-| Network | [Enter configuration] |
+| CPU | 2 Cores |
+| RAM | 6 GB |
+| Storage | 80 GB |
+| Hypervisor | TrueNAS |
+
+### Resource Allocation Rationale
+
+The virtual machine was allocated 2 CPU cores,
+6 GB RAM and 80 GB storage to provide resources
+for the Windows Server operating system and
+Active Directory Domain Services lab environment.
+
+The configuration provides a foundation for
+testing domain services, DNS, Group Policy
+and user lifecycle management.
+
 
 ## 4. Deployment Process
 
