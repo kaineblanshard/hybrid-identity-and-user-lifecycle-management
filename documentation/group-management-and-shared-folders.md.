@@ -1,1 +1,59 @@
+# Group Management and Shared Folder Permissions
 
+## What I worked on
+
+Today I continued building on my Active Directory environment, focusing on managing security groups and controlling access to shared folders.
+
+### 1. Group management
+
+I reviewed the security groups I'd previously created for IT, Finance and Sales.
+
+I then practised nesting groups so that users can receive access to resources through their department groups, rather than assigning permissions to every individual user.
+
+This helped me understand how organisations can manage access more easily as their number of users grows.
+
+### 2. Creating shared folders
+
+I created separate Sales and Finance folders on the server.
+
+I worked through the folder security settings and configured permissions so that each department has its own access.
+
+I also learned the difference between folder permissions and network sharing permissions, and why both need to be considered when setting up shared resources.
+
+### 3. Testing access
+
+I created network shares for Sales and Finance and checked that they were available through the server.
+
+I started testing access using different user accounts.
+
+I came across an issue where Sarah's account appeared to have access to the Finance folder when it shouldn't. I checked her group memberships and found no direct membership of the Finance groups.
+
+I haven't fully resolved this yet, so I'll return to it in a future session.
+
+### 4. PowerShell practice
+
+I continued developing my PowerShell skills by practising ways to retrieve and manage information in Active Directory.
+
+Today I worked on:
+
+- Listing user accounts and their details.
+- Checking which accounts are enabled or disabled.
+- Exporting user information into a CSV report.
+- Finding disabled user accounts.
+- Looking at group membership and shared folder permissions.
+
+
+## What I've learned
+
+Today has helped me understand how security groups can be used to manage access to shared resources.
+
+I've also gained more experience with Windows folder permissions and network sharing.
+
+I'm becoming more comfortable using PowerShell to retrieve information from Active Directory 
+## Next steps
+
+- Return to the issue with access to the Finance folder.
+- Test access using different user accounts.
+- Continue practising PowerShell.
+- Practise updating user information and managing accounts.
+- Move on to Group Policy 
