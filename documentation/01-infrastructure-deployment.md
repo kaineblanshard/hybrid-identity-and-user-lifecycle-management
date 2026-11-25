@@ -1,81 +1,67 @@
+# 01 - Setting Up the Server
 
-# 01 - Infrastructure Deployment
+## 1. What I wanted to do
 
-## 1. Overview
+The first step of this project was getting a Windows Server machine set up so I could start learning and practising Active Directory.
 
-The foundation of this project is a self-hosted virtual
-infrastructure environment.
+I used an HP ProLiant server running TrueNAS to create a virtual machine for Windows Server 2022.
 
-A physical HP ProLiant server running TrueNAS was used
-to provision and host a virtual machine running
-Windows Server 2022.
+This server would eventually be used to manage users, computers, groups and practice some networking
 
-This virtual machine will act as the foundation for
-the Active Directory Domain Services deployment.
+## 2. The equipment and setup
 
-## 2. Physical Infrastructure
+I used:
 
-| Component | Details |
-|---|---|
-| Physical Server | HP ProLiant |
-| Virtualisation Platform | TrueNAS |
-| Workload | Windows Server 2022 |
-| Purpose | Active Directory infrastructure |
+- HP ProLiant physical server.
+- TrueNAS to manage the virtual machines.
+- Windows Server 2022 as the operating system.
+- A virtual machine I named called DC01.
 
+I gave the virtual machine:
 
-## 3. Virtual Machine Configuration
+- 2 CPU cores.
+- 6GB RAM.
+- 80GB storage.
 
-A virtual machine was provisioned within TrueNAS
-to host Windows Server 2022.
+These resources were enough to get Windows Server running (Physical PC has 32gb so I had to allocate accordingly as i will likely set up more VM at some point)
 
-The following resources were allocated:
+## 3. What I did
 
-| Resource | Allocation |
-|---|---|
-| VM Name | DC01 |
-| Operating System | Windows Server 2022 |
-| CPU | 2 Cores |
-| RAM | 6 GB |
-| Storage | 80 GB |
-| Hypervisor | TrueNAS |
+I completed the following:
 
-### Resource Allocation Rationale
-
-The virtual machine was allocated 2 CPU cores,
-6 GB RAM and 80 GB storage to provide resources
-for the Windows Server operating system and
-Active Directory Domain Services lab environment.
-
-The configuration provides a foundation for
-testing domain services, DNS, Group Policy
-and user lifecycle management.
-
-
-## 4. Deployment Process
-
-The following steps were completed:
-
-1. Accessed the TrueNAS management interface.
-2. Navigated to Virtual Machines.
+1. Logged into the TrueNAS interface.
+2. Went to the Virtual Machines section.
 3. Created a new virtual machine.
-4. Configured CPU, memory and storage resources.
-5. Attached Windows Server 2022 installation media.
-6. Configured the virtual machine boot process.
-7. Installed Windows Server 2022.
-8. Accessed the installed operating system through
-   the virtual machine console.
+4. Set the name to DC01.
+5. Allocated the memory, CPU and storage.
+6. Uploaded and selected the Windows Server 2022 installation file.
+7. Started the virtual machine and installed Windows Server.
+8. Accessed Windows Server through the TrueNAS console.
+
+  ## 4. Setting up the network in TrueNAS
+
+One of the things I needed to work out was how to keep the lab network separate from my normal home network, as this kept disconnecting all the other devices on the network.
+
+TrueNAS was already using one of the server's network ports for its normal connection so I didn't want to change this.
+
+I created a separate network bridge in TrueNAS called br1 and didnt assign any IP address to it for the lab.
+
+The idea was to keep the existing network connection available for normal access to TrueNAS, while using the new bridge for the Active Directory lab.
+
+I then connected the DC01 virtual machine to this new bridge rather than the normal network bridge.
+
+This worked as after running the machine on an isolated network there was no more issues with other devices using the same network in the house
+
+At this stage, the lab was isolated and didn't have internet access, so I wanted to set up Active Directory before worrying about syncing it to Entra. 
 
 ## 5. Evidence
 
-### TrueNAS Virtual Machine Configuration
+I saved a screenshot of the virtual machine setup to show how DC01 was configured.
 
 ![TrueNAS VM Configuration](../screenshots/truenas-vm-configuration.png)
 
-## 6. Outcome
+## 6. My position after this
 
-A Windows Server 2022 virtual machine was successfully
-provisioned and installed on the TrueNAS host.
+I created and installed my Windows Server 2022 virtual machine.
 
-This provides the infrastructure foundation for the
-next stage: configuring networking and deploying
-Active Directory Domain Services.
+This gave me a working server to use for the rest of the project.
