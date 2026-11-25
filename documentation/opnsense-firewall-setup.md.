@@ -1,1 +1,45 @@
+# Setting Up Internet Access for My AD Lab
 
+**Date: 25 November 2026**
+
+## The plan
+
+I wanted to give my Active Directory lab access to the internet so I could sync it to Microsoft Entra ID and update help in powershell
+
+I also wanted to keep my lab separate from my normal home network.
+
+## What I did
+
+- Created another virtual machine in TrueNAS for OPNsense.
+- Installed OPNsense to use as the firewall for my lab.
+- Connected it to my home network for internet access.
+- Connected the other side to my isolated lab network.
+- Set up the LAN and WAN interfaces.
+- Configured the firewall to stop my lab accessing my home network.
+- Updated the default gateway on DC01 so it could use OPNsense to reach the internet.
+
+## Testing
+
+ I then tested the connection from DC01.
+
+- Used `ping 1.1.1.1` to check internet connectivity.
+- Used `nslookup google.com` to check DNS was working.
+- checked i could browse in Microsoft Edge
+- Tried accessing my TrueNAS management address and confirmed the firewall blocked the connection. Initially the firewall did not work until i realised i needed to move my block rule above the allow one
+
+All the tests worked after this change
+
+## What I learned
+
+This was my first time setting up a virtual firewall and configuring network connections between different networks.
+
+I learned more about:
+- How firewalls control network traffic.
+- The difference between LAN and WAN.
+- How a default gateway works.
+- How firewall rules are created and why their order matters.
+- How to test network connections using basic commands.
+
+## Next steps
+
+Now that the lab has internet access, I will sync my Active Directory with Microsoft Entra ID
